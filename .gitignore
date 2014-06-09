@@ -1,4 +1,4 @@
-# Ignore SQLite database files
+# SQLite database files
 *.sqlite3
 
 # VirtualEnv files
