@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+# Get the MOVEME_ENV variable, defaulting to production
+ENVIRONMENT=os.environ.get('MOVEME_ENV', 'production')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -19,12 +22,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = 'm83y=6!wgp44e7jultgf&jd7%pxeqx_xcyca35f^fe(v$v9-o2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if ENVIRONMENT == 'production':
+    DEBUG = False
+
+    ALLOWED_HOSTS = (
+        'moveme.monokro.me',
+        'www.moveme.monokro.me',
+    )
+
+else:
+    DEBUG = True
+    ALLOWED_HOSTS = ()
 
 TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
 
 # Application definition
 INSTALLED_APPS = (
