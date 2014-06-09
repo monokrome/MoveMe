@@ -1,6 +1,9 @@
 # SQLite database files
 *.sqlite3
 
+# Python cached / optimized files
+*.py[co]
+
 # VirtualEnv files
 /bin/*
 /lib/*
