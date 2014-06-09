@@ -1,3 +1,6 @@
+# Ignore SQLite database files
+*.sqlite3
+
 # VirtualEnv files
 /bin/*
 /lib/*
