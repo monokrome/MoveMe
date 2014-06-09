@@ -7,3 +7,6 @@
 /.Python
 
 # Ignore non-git hidden files
+/.*
+/!.git*
+
