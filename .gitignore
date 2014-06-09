@@ -1,8 +1,9 @@
 # VirtualEnv files
-bin/*
-lib/*
-local/*
-include/*
-build/*
-.Python
+/bin/*
+/lib/*
+/local/*
+/include/*
+/build/*
+/.Python
 
+# Ignore non-git hidden files
