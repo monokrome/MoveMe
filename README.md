@@ -62,6 +62,19 @@ echo 'MOVEME_ENV=development' >> ~/.bashrc
 
 ```
 
+Potential Enhancements
+----------------------
+
+The following trade-offs were made in order to minimize development time, but
+would be good to reconsider if the project were to grow substantially:
+
+- Consistent error responses
+- Centralized error message strings text for localization/internationalization
+- Tests have been omitted, but really should exist.
+- Pagination would be nice, but has been omitted.
+- nextbus.py could be made more DRY by leveraging common naming conventions
+- Caching would be nice
+
 
 [pytn]: https://python.org
 [venv]: https://virtualenv.pypa.io/en/latest/

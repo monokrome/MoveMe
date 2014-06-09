@@ -19,18 +19,24 @@ class NextBusViewSet(viewsets.GenericViewSet):
 
     endpoint = 'http://webservices.nextbus.com/service/publicXMLFeed'
     require_agency = True
-    tag_name = None
+    root_tag_name = None
+
+    # Allows us to represent retrieve (detail) views in list format
+    retrieve_as_list = False
 
     def __init__(self, *args, **kwargs):
-        if not isinstance(self.tag_name, basestring):
+        if not isinstance(self.root_tag_name, basestring):
             raise ValueError(
                 'self.command must be a string on {0}.'.format(
                     self.__class__.__name__
                 )
             )
 
-        self.retrieve_command = self.tag_name + 'Config'
-        self.list_command = self.tag_name + 'List'
+        if not hasattr(self, 'retrieve_command'):
+            self.retrieve_command = self.root_tag_name + 'Config'
+
+        if not hasattr(self, 'list_command'):
+            self.list_command = self.root_tag_name + 'List'
 
         return super(NextBusViewSet, self).__init__(*args, **kwargs)
 
@@ -76,10 +82,10 @@ class NextBusViewSet(viewsets.GenericViewSet):
         if not getattr(tree, 'body'):
             raise ValueError('Unexpected response received.')
 
-        if pk:
-            results = tree.body.find(self.tag_name)
+        if pk and not self.retrieve_as_list:
+            results = tree.body.find(self.root_tag_name)
         else:
-            results = tree.find_all(self.tag_name)
+            results = tree.find_all(self.root_tag_name)
 
         return results
 
@@ -99,7 +105,7 @@ class NextBusViewSet(viewsets.GenericViewSet):
         results = self.parse_xml(nextbus_request.text, pk)
 
         # This is a list view if there's no pk since POST is not allowed.
-        many = pk is None
+        many = self.retrieve_as_list or pk is None
         serializer = self.get_serializer(results, many=many)
 
         return Response(
