@@ -38,6 +38,31 @@ source bin/activate
 *NOTE: Don't forget to `source bin/activate` to use the virtual environment.*
 
 
+Developing
+----------
+
+Development of this project follows the same process as documented in the
+**Installation** section with the following additional steps:
+
+- It is recommended to use `./manage.py runserver_plus` for running the server.
+- It is recommended to set `MOVEME_ENV=development` in your environment.
+
+An example command to run a server in development would be:
+
+```sh
+MOVEME_ENV=development ./manage.py runserver_plus
+
+```
+
+If preferred, you can set MOVEME_ENV globally in bash by running the following
+command and then restarting your terminal instead of typing it every time:
+
+```sh
+echo 'MOVEME_ENV=development' >> ~/.bashrc
+
+```
+
+
 [pytn]: https://python.org
 [venv]: https://virtualenv.pypa.io/en/latest/
 
