@@ -1,8 +1,8 @@
 MoveMe
 ======
 
-MoveMe is a project that provides Muni / BART transportation data over a
-RESTful web service in various formats.
+MoveMe is a project that provides NextBus transportation data over a RESTful
+web service in various formats.
 
 
 Installation
