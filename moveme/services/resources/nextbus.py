@@ -68,7 +68,7 @@ class NextBusViewSet(viewsets.GenericViewSet):
         return url
 
     def parse_xml(self, xml, pk=None):
-        """ Parses NextBus XML data into a BeatifulSoup object.
+        """ Parses NextBus XML data into a BeautifulSoup object.
         
         If pk is truthy, this this will return a single object. Otherwise, it
         will return a list of items.
@@ -125,3 +125,4 @@ class NextBusDetailMixin(object):
 
     def retrieve(self, request, pk=None):
         return self.get_response(request, pk)
+

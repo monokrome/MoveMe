@@ -43,6 +43,8 @@ class ScheduleSerializer(NextBusTagSerializer):
     # TODO: direction?
 
     def get_overview(self, obj):
+        print(obj)
+
         return OverviewSerializer(
             obj.find('header'),
             many=False
