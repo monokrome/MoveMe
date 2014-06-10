@@ -19,8 +19,6 @@ After having installed these depedencies, clone this project:
 
 ```sh
 git clone https://github.com/monokrome/MoveMe
-
-
 ```
 
 You should now be able to run the following commands within the newly created
@@ -31,8 +29,6 @@ virtualenv --distribute .
 source bin/activate
 ./manage.py syncdb --migrate
 ./manage.py runserver
-
-
 ```
 
 *NOTE: Don't forget to `source bin/activate` to use the virtual environment.*
