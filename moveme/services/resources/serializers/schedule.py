@@ -29,7 +29,7 @@ class TimedStopSerializer(NextBusTagSerializer):
         return obj.text
 
     def get_epoch_time(self, obj):
-        return obj.attrs['epochTime']
+        return obj.attrs.get('epochTime')
 
 
 class BlockSerializer(serializers.Serializer):
@@ -37,7 +37,7 @@ class BlockSerializer(serializers.Serializer):
     stops = serializers.SerializerMethodField('get_stops')
 
     def get_id(self, obj):
-        return obj.attrs['blockID']
+        return obj.attrs.get('blockID')
 
     def get_stops(self, obj):
         # TODO: Not sure what this is all about.
@@ -67,14 +67,14 @@ class ScheduleSerializer(NextBusTagSerializer):
         ).data
 
     def get_title(self, obj):
-        return obj.attrs['title']
+        return obj.attrs.get('title')
 
     def get_schedule_class(self, obj):
-        return obj.attrs['scheduleClass']
+        return obj.attrs.get('scheduleClass')
 
     def get_service_class(self, obj):
-        return obj.attrs['serviceClass']
+        return obj.attrs.get('serviceClass')
 
     def get_direction(self, obj):
-        return obj.attrs['direction']
+        return obj.attrs.get('direction')
 

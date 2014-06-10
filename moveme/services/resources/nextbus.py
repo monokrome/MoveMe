@@ -98,6 +98,7 @@ class NextBusViewSet(viewsets.GenericViewSet):
 
     def get_response(self, request, pk=None):
         url = self.get_url(request, pk)
+        print(url)
         nextbus_request = requests.get(url)
 
         results = self.parse_xml(nextbus_request.text, pk)

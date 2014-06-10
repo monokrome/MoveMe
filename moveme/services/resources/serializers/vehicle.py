@@ -17,28 +17,28 @@ class VehicleSerializer(serializers.Serializer):
 
     def get_route(self, obj):
         # TODO: Convert this into a hyperlink
-        return obj.attrs['routeTag']
+        return obj.attrs.get('routeTag')
 
     def get_direction(self, obj):
         return obj.attrs.get('dirTag')
 
     def get_latitude(self, obj):
-        return obj.attrs['lat']
+        return obj.attrs.get('lat')
 
     def get_longitude(self, obj):
-        return obj.attrs['lon']
+        return obj.attrs.get('lon')
 
     def get_seconds_delayed(self, obj):
-        return obj.attrs['secsSinceReport']
+        return obj.attrs.get('secsSinceReport')
 
     def get_is_predictable(self, obj):
-        return obj.attrs['predictable']
+        return obj.attrs.get('predictable')
 
     def get_heading(self, obj):
-        return obj.attrs['heading']
+        return obj.attrs.get('heading')
 
     def get_speed(self, obj):
-        return obj.attrs['speedKmHr']
+        return obj.attrs.get('speedKmHr')
 
     def get_speed_units(self, obj):
         return 'KmPh'

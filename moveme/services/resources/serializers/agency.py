@@ -8,8 +8,8 @@ class AgencySerializer(NextBusTagSerializer):
     region_title = serializers.SerializerMethodField('get_region_title')
 
     def get_title(self, obj):
-        return obj.attrs['title']
+        return obj.attrs.get('title')
 
     def get_region_title(self, obj):
-        return obj.attrs['regionTitle']
+        return obj.attrs.get('regionTitle')
 
