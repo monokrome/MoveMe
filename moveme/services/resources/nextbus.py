@@ -65,8 +65,6 @@ class NextBusViewSet(viewsets.GenericViewSet):
         if pk:
             url += '&r=' + pk
 
-        print(url)
-
         return url
 
     def parse_xml(self, xml, pk=None):
