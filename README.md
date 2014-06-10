@@ -34,6 +34,65 @@ source bin/activate
 *NOTE: Don't forget to `source bin/activate` to use the virtual environment.*
 
 
+Usage
+-----
+
+The following public endpoints are provided by the hosted web service:
+
+|----------|-------------|-----------------------------------------------|
+| Resource |   Endpoint  |                Description                    |
+|----------|-------------|-----------------------------------------------|
+| Agency   | /agency/    | A listing of all transportation agencies.     |
+| Route    | /route/     | Information about routes at an agency.        |
+| Message  | /message/   | Status messages about routes at an agency.    |
+| Schedule | /schedule/  | Schedules for different routes at an agency.  |
+| Vehicle  | /vehicle/   | A listing of vehicles on a given route.       |
+|----------|-------------|------------------------------------------------
+
+*NOTE:* The predictions API is not yet supported but is being planned.
+
+
+### Agency
+
+Does not accept any filters. Provides the following endpoints:
+
+- List all agencies: http://localhost:8000/agency/
+
+### Route
+
+Requires an `agency` filter which should be set to the tag of whichever agency
+this route belongs to.
+
+- List all routes for a 'sf-muni': http://localhost:8000/route/?agency=sf-muni
+- Details for `sf-muni` route `F`: http://localhost:8000/route/F/?agency=sf-muni
+
+### Message
+
+Requires an `agency` filter which should be set to the tag of whichever agency
+the messages belong to.
+
+- List all message IDs for 'sf-muni': http://localhost:8000/message/?agency=sf-muni
+- Messages for `sf-muni` route `F`: http://localhost:8000/message/F/?agency=sf-muni
+
+### Schedule
+
+Requires an `agency` filter which should be set to the tag of whichever agency
+the messages belong to.
+
+- List all possible schedules for `sf-muni`: http://localhost:8000/schedule/?agency=sf-muni
+- Schedule details for `sf-muni` route `F`: http://localhost:8000/schedule/?agency=sf-muni
+
+### Vehicle
+
+Requires an `agency` filter which should be set to the tag of whichever agency
+the messages belong to. Requires a `route` filter to filter by specific routes.
+
+Optionally accepts a `time` filter, which will filter results to only show
+vehicles which have changed in `time` seconds.
+
+- List all active vehicles for `sf-muni` route `F`: http://localhost:8000/vehicle/?agency=sf-muni&route=F
+
+
 Developing
 ----------
 
@@ -64,12 +123,10 @@ Potential Enhancements
 The following trade-offs were made in order to minimize development time, but
 would be good to reconsider if the project were to grow substantially:
 
-- Consistent error responses
-- Centralized error message strings text for localization/internationalization
-- Tests have been omitted, but really should exist.
+- Caching would be nice for resources which don't change often.
+- Consistent error responses with i18n & localization
+- Tests have been omitted since this is a prototype.
 - Pagination would be nice, but has been omitted.
-- nextbus.py could be made more DRY by leveraging common naming conventions
-- Caching would be nice
 
 
 [pytn]: https://python.org
