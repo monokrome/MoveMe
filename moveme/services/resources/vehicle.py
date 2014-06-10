@@ -30,7 +30,16 @@ class VehicleViewSet(nextbus.NextBusViewSet,
         return request.GET['route']
 
     def get_url(self, request, pk=None):
-        """ Allow a 'time' filter for providing seconds since last checked. """
+        """ Require a `route` filter, and allow a `time` filter.
+
+        Require a 'route' filter, so that we know which route to get data for.
+        With good reason, getting data for all routes is not applicable.
+
+        Allow a 'time' filter for providing seconds since the last time the
+        application checked this endpoint data. This will allow us to request
+        only changed items from NextBus.
+            
+        """
 
         time = self.get_time(request)
         route = self.get_route(request)
