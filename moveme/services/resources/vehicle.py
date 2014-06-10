@@ -14,8 +14,13 @@ class VehicleViewSet(nextbus.NextBusViewSet,
     serializer_class = VehicleSerializer
 
     def get_url(self, request, pk=None):
-        if 'time' not in request.GET:
-            raise ParseError('The `time` field is required.')
+        """ Allow a 'time' filter for providing seconds since last checked. """
+
+        if 'time' in request.GET:
+            time = request.GET['time']
+        else:
+            time = 0
 
         base_url = super(VehicleViewSet, self).get_url(request, pk)
-        return base_url + '&t=' + request.GET['time']
+        return base_url + '&t=' + time
+
