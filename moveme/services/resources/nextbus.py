@@ -9,7 +9,7 @@ from rest_framework.response import Response
 class NextBusViewSet(viewsets.GenericViewSet):
     """ Abstracts the NextBus API through REST Framework.
 
-    This allows us to crate RESTful resources which represent the entities
+    This allows us to create RESTful resources which represent the entities
     which are provided by the NextBus API.
 
     Visit http://www.nextbus.com/xmlFeedDocs/NextBusXMLFeed.pdf for
