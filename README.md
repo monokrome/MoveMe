@@ -15,7 +15,7 @@ You will need the following repositories in order to get the project running:
 
 *NOTE: Python 3.x may work, but is currently untested*
 
-After having installed these depedencies, clone this project:
+After having installed these dependencies, clone this project:
 
 ```sh
 git clone https://github.com/monokrome/MoveMe
@@ -49,7 +49,7 @@ The following public endpoints are provided by the hosted web service:
  Vehicle  | /vehicle/   | A listing of vehicles on a given route.       
 
 
-*NOTE:* The predictions API is not yet supported but is being planned.
+*NOTE:* The predictions service is not yet supported but is being planned.
 
 
 ### Agency
@@ -109,8 +109,9 @@ MOVEME_ENV=development ./manage.py runserver_plus
 
 ```
 
-If preferred, you can set MOVEME_ENV globally in bash by running the following
-command and then restarting your terminal instead of typing it every time:
+If preferred, you can set `MOVEME_ENV` globally in bash by running the
+following command and then restarting your terminal instead of typing it every
+time:
 
 ```sh
 echo 'MOVEME_ENV=development' >> ~/.bashrc
