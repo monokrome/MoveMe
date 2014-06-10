@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from ...fields import TreeAttrField
 from .nextbus import NextBusTagSerializer
 
 
@@ -28,34 +29,16 @@ class TextSerializer(serializers.Serializer):
 
 
 class MessageSerializer(serializers.Serializer):
-    id = serializers.SerializerMethodField('get_id')
-    creator = serializers.SerializerMethodField('get_creator')
-    priority = serializers.SerializerMethodField('get_priority')
+    id = TreeAttrField()
+    creator = TreeAttrField()
+    priority = TreeAttrField()
 
-    send_to_buses = serializers.SerializerMethodField('get_send_to_buses')
+    send_to_buses = TreeAttrField('sendToBuses')
 
-    start_boundary = serializers.SerializerMethodField('get_start_boundary')
-    end_boundary = serializers.SerializerMethodField('get_end_boundary')
+    start_boundary = TreeAttrField('startBoundary')
+    end_boundary = TreeAttrField('endBoundary')
 
     text = serializers.SerializerMethodField('get_text')
-
-    def get_id(self, obj):
-        return obj.attrs['id']
-
-    def get_creator(self, obj):
-        return obj.attrs.get('creator')
-
-    def get_priority(self, obj):
-        return obj.attrs['priority']
-
-    def get_send_to_buses(self, obj):
-        return obj.attrs['sendToBuses']
-
-    def get_start_boundary(self, obj):
-        return obj.attrs.get('startBoundary')
-
-    def get_end_boundary(self, obj):
-        return obj.attrs.get('endBoundary')
 
     def get_text(self, obj):
         return TextSerializer(obj, many=False).data

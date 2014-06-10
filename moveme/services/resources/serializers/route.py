@@ -1,17 +1,12 @@
 from rest_framework import serializers
 
+from ...fields import TreeAttrField
 from .nextbus import NextBusTagSerializer
 
 
 class PointSerializer(serializers.Serializer):
-    lat = serializers.SerializerMethodField('get_latitude')
-    lon = serializers.SerializerMethodField('get_longitude')
-
-    def get_latitude(self, obj):
-        return float(obj.attrs['lat'])
-
-    def get_longitude(self, obj):
-        return float(obj.attrs['lon'])
+    lat = TreeAttrField()
+    lon = TreeAttrField()
 
 
 class PathSerializer(serializers.Serializer):
@@ -29,40 +24,19 @@ class StopSerializer(NextBusTagSerializer):
 
 
 class DetailedStopSerializer(StopSerializer):
-    title = serializers.SerializerMethodField('get_title')
-    lat = serializers.SerializerMethodField('get_latitude')
-    lon = serializers.SerializerMethodField('get_longitude')
-    id = serializers.SerializerMethodField('get_id')
+    id = TreeAttrField('stopId')
+    title = TreeAttrField()
 
-    # FIXME: NextBus API won't split out titles for duplicate records.
-
-    # Right now, we are simply using get() in order to return None for
-    # non-existing keys, but we should temporarily cache these values
-    # in order to preserve them in repeat objects.
-    def get_title(self, obj):
-        return obj.attrs.get('title')
-
-    def get_latitude(self, obj):
-        return obj.attrs.get('lat')
-
-    def get_longitude(self, obj):
-        return obj.attrs.get('lon')
-
-    def get_id(self, obj):
-        return obj.attrs.get('stopId')
+    lat = TreeAttrField()
+    lon = TreeAttrField()
 
 
 class DirectionSerializer(NextBusTagSerializer):
-    title = serializers.SerializerMethodField('get_title')
-    # stops = serializers.SerializerMethodField('get_stops')
-    name = serializers.SerializerMethodField('get_name')
+    title = TreeAttrField()
+    name = TreeAttrField()
+
+    stops = serializers.SerializerMethodField('get_stops')
     user_important = serializers.SerializerMethodField('get_user_important')
-
-    def get_title(self, obj):
-        return obj.attrs['title']
-
-    def get_name(self, obj):
-        return obj.attrs['name']
 
     def get_user_important(self, obj):
         """ Returns whether or not this is an important step for a user. """

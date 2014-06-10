@@ -1,9 +1,7 @@
 from rest_framework import serializers
+from ...fields import TreeAttrField
 
 
 class NextBusTagSerializer(serializers.Serializer):
-    tag = serializers.SerializerMethodField('get_tag')
-
-    def get_tag(self, obj):
-        return obj.attrs['tag']
+    tag = TreeAttrField('tag')
 
