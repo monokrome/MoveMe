@@ -39,15 +39,15 @@ Usage
 
 The following public endpoints are provided by the hosted web service:
 
-|----------|-------------|-----------------------------------------------|
-| Resource |   Endpoint  |                Description                    |
-|----------|-------------|-----------------------------------------------|
-| Agency   | /agency/    | A listing of all transportation agencies.     |
-| Route    | /route/     | Information about routes at an agency.        |
-| Message  | /message/   | Status messages about routes at an agency.    |
-| Schedule | /schedule/  | Schedules for different routes at an agency.  |
-| Vehicle  | /vehicle/   | A listing of vehicles on a given route.       |
-|----------|-------------|------------------------------------------------
+
+ Resource | Endpoint    | Description                                   
+----------|-------------|-----------------------------------------------
+ Agency   | /agency/    | A listing of all transportation agencies.     
+ Route    | /route/     | Information about routes at an agency.        
+ Message  | /message/   | Status messages about routes at an agency.    
+ Schedule | /schedule/  | Schedules for different routes at an agency.  
+ Vehicle  | /vehicle/   | A listing of vehicles on a given route.       
+
 
 *NOTE:* The predictions API is not yet supported but is being planned.
 
