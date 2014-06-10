@@ -3,7 +3,8 @@ from .serializers.schedule import ScheduleSerializer
 
 
 class ScheduleViewSet(nextbus.NextBusViewSet,
-        nextbus.NextBusDetailMixin):
+        nextbus.NextBusDetailMixin,
+        nextbus.NextBusListMixin):
 
     root_tag_name = 'route'
     retrieve_command = 'schedule'
