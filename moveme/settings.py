@@ -92,3 +92,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Path to MaxMind GeoIP data
+GEOIP_PATH = os.path.join(BASE_DIR, 'assets', 'GeoLiteCity.dat')
+
+# Domain or IP address to use for loopback addresses for local testing
+LOCALHOST_LOCATION_ALIAS='monokro.me'
