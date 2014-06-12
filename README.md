@@ -6,12 +6,12 @@ web service in various formats.
 
 
 Installation
-------------
-
-You will need the following repositories in order to get the project running:
+------------ 
+You will need the following dependencies in order to get the project running:
 
 - [Python 2.6.x][pytn]
 - [VirtualEnv][venv] (recommended)
+- GeoIP C library
 
 *NOTE: Python 3.x may work, but is currently untested*
 
@@ -20,6 +20,21 @@ After having installed these dependencies, clone this project:
 ```sh
 git clone https://github.com/monokrome/MoveMe
 ```
+
+Next, you will need to install the MaxMind GeoIP database.
+
+On UNIX systems, this can be done by using the `bin/install_geo_db.sh` script.
+If this script fails to work for some reason, this can be done manually by
+extracting the downloaded archive into an `assets` directory under the git
+repository root.
+
+*NOTE:
+		You will have to create an assets directory afte cloning the
+		repository if manually installing the files. The install script for unix
+		systems will create it automatically.*
+
+If installation of these files worked, you will see a file called
+`GeoLiteCity.dat` in this project's `/assets/` directory.
 
 You should now be able to run the following commands within the newly created
 `MoveMe` directory:
@@ -40,14 +55,15 @@ Usage
 The following public endpoints are provided by the hosted web service:
 
 
- Resource | Endpoint    | Description                                   
-----------|-------------|-----------------------------------------------
- Agency   | /agency/    | A listing of all transportation agencies.     
- Route    | /route/     | Information about routes at an agency.        
- Message  | /message/   | Status messages about routes at an agency.    
- Schedule | /schedule/  | Schedules for different routes at an agency.  
- Vehicle  | /vehicle/   | A listing of vehicles on a given route.       
-
+ Resource  | Endpoint    | Description                                   
+-----------|-------------|-----------------------------------------------
+ Agency    | /agency/    | A listing of all transportation agencies.     
+ Route     | /route/     | Information about routes at an agency.        
+ Message   | /message/   | Status messages about routes at an agency.    
+ Schedule  | /schedule/  | Schedules for different routes at an agency.  
+ Vehicle   | /vehicle/   | A listing of vehicles on a given route.       
+ Departure | /departure/ | Information about departures at specific stops.
+ User      | /user/      | Information about the current user.
 
 *NOTE:* The predictions service is not yet supported but is being planned.
 
