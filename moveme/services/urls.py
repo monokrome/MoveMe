@@ -11,14 +11,19 @@ from .resources.user import UserViewSet
 
 router = routers.DefaultRouter()
 
-router.register('agency', AgencyViewSet, base_name='agency')
-router.register('route', RouteViewSet, base_name='route')
-router.register('schedule', ScheduleViewSet, base_name='schedule')
-router.register('message', MessageViewSet, base_name='message')
-router.register('vehicle', VehicleViewSet, base_name='vehicle')
-router.register('departure', DepartureViewSet, base_name='departure')
-router.register('user', UserViewSet, base_name='user')
+resources = {
+    'agency': AgencyViewSet,
+    'route': RouteViewSet,
+    'schedule': ScheduleViewSet,
+    'message': MessageViewSet,
+    'vehicle': VehicleViewSet,
+    'departure': DepartureViewSet,
+    'user': UserViewSet,
+}
 
+for name in resources:
+    resource = resources[name]
+    router.register(name, resource, base_name=name)
 
 urlpatterns = router.urls
 
