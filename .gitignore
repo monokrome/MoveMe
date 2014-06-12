@@ -13,6 +13,7 @@
 /local/*
 /include/*
 /build/*
+/share/
 /.Python
 
 # Ignore non-git hidden files
