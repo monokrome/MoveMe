@@ -1,3 +1,6 @@
+# Project-dependent assets
+/assets/*
+
 # SQLite database files
 *.sqlite3
 
@@ -16,3 +19,5 @@
 /.*
 /!.git*
 
+# Don't ignore our script for installing the MaxMind GeoLocation database.
+!/bin/install_geo_db.sh
