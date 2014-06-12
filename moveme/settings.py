@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'django_extensions',
 
     'rest_framework',
+    'moveme.services',
 )
 
 MIDDLEWARE_CLASSES = (
